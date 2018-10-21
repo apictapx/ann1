@@ -1,4 +1,4 @@
-package math;
+package edu.packt.neuralnet.math;
 
 public interface IActivationFunction {
     double calc(double x);

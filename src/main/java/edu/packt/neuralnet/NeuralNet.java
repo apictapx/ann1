@@ -1,6 +1,6 @@
 package edu.packt.neuralnet;
 
-import math.IActivationFunction;
+import edu.packt.neuralnet.math.IActivationFunction;
 
 import java.util.ArrayList;
 
@@ -13,6 +13,14 @@ public class NeuralNet {
     private int numberOfOutputs;
     private ArrayList<Double> input;
     private ArrayList<Double> output;
+
+    public void setInput(ArrayList<Double> input) {
+        this.input = input;
+    }
+
+    public ArrayList<Double> getOutput() {
+        return output;
+    }
 
     public NeuralNet(
             int numberofinputs,
@@ -40,10 +48,16 @@ public class NeuralNet {
         inputLayer.calc();
         for (int i = 0; i < numberOfHiddenLayers; i++) {
             HiddenLayer hl = hiddenLayer.get(i);
-            hl.setInput(hl.getPreviousLayer().getOutput()); hl.calc();
+            hl.setInput(hl.getPreviousLayer().getOutput());
+            hl.calc();
         }
         outputLayer.setInput(outputLayer.getPreviousLayer().getOutput());
         outputLayer.calc();
         this.output = outputLayer.getOutput();
+    }
+
+    public void print() {
+        //TODO there is something more
+        System.out.println("neural net print.");
     }
 }

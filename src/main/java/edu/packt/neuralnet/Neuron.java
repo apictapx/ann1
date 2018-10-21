@@ -1,6 +1,7 @@
 package edu.packt.neuralnet;
 
-import math.*;
+import edu.packt.neuralnet.math.IActivationFunction;
+import edu.packt.neuralnet.math.RandomNumberGenerator;
 
 import java.util.ArrayList;
 

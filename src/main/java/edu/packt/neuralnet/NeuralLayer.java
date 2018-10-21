@@ -1,6 +1,6 @@
 package edu.packt.neuralnet;
 
-import math.IActivationFunction;
+import edu.packt.neuralnet.math.IActivationFunction;
 
 import java.util.ArrayList;
 
@@ -14,12 +14,20 @@ public abstract class NeuralLayer {
     protected ArrayList<Double> output;
     protected int numberOfInputs;
 
+    public NeuralLayer getNextLayer() {
+        return nextLayer;
+    }
+
     public void setNextLayer(NeuralLayer nextLayer) {
         this.nextLayer = nextLayer;
     }
 
     public NeuralLayer getPreviousLayer() {
         return previousLayer;
+    }
+
+    public void setPreviousLayer(NeuralLayer previousLayer) {
+        this.previousLayer = previousLayer;
     }
 
     public int getNumberOfNeuronsInLayer() {
@@ -35,7 +43,7 @@ public abstract class NeuralLayer {
     }
 
     protected void init() {
-        for(int i = 0; i < numberOfNeuronsInLayer; i++) {
+        for (int i = 0; i < numberOfNeuronsInLayer; i++) {
             try {
                 neuron.get(i).setActivationFunction(activationFnc);
                 neuron.get(i).init();
@@ -52,7 +60,7 @@ public abstract class NeuralLayer {
             neuron.get(i).calc();
             try {
                 output.set(i, neuron.get(i).getOutput());
-            } catch(IndexOutOfBoundsException iobe) {
+            } catch (IndexOutOfBoundsException iobe) {
                 output.add(neuron.get(i).getOutput());
             }
         }

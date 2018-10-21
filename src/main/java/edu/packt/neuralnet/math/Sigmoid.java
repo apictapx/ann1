@@ -1,4 +1,4 @@
-package math;
+package edu.packt.neuralnet.math;
 
 public class Sigmoid implements IActivationFunction {
     private double a = 1.0;
